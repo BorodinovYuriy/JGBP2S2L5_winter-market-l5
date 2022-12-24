@@ -1,33 +1,30 @@
 package ru.gb.spring.wintermarket.entity;
 
-
-import javax.persistence.*;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
-@Table(name = "products")
+@Table(name = "categories")
 @NoArgsConstructor
-public class Product {
+@AllArgsConstructor
+public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "title")
     private String title;
+    @OneToMany(mappedBy ="category")
+    private List<Product> products;
 
-    @Column(name = "price")
-    private int price;
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
 
     @CreationTimestamp//hibernate
     @Column(name = "created_at")
@@ -35,11 +32,4 @@ public class Product {
     @UpdateTimestamp//hibernate
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
-
-
-    public Product(Long id, String title, int price) {
-        this.id = id;
-        this.title = title;
-        this.price = price;
-    }
 }

@@ -5,11 +5,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor//для джэксона
+@NoArgsConstructor
 @AllArgsConstructor
 public class ProductDto {
 private Long id;
 private String title;
 private int price;
+private String categoryTitle;
 }
 

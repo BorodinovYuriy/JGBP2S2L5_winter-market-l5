@@ -11,6 +11,7 @@ public class ProductConverter {
                 productDto.getId(),
                 productDto.getTitle(),
                 productDto.getPrice()
+                //подумать о назначении категории
         );
     }
 
@@ -18,7 +19,8 @@ public class ProductConverter {
         return new ProductDto(
                 product.getId(),
                 product.getTitle(),
-                product.getPrice()
+                product.getPrice(),
+                product.getCategory().getTitle()
         );
     }
 }

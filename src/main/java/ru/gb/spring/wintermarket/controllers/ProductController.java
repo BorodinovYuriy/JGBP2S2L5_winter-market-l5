@@ -39,11 +39,7 @@ public class ProductController {
     public ProductDto findProductById(@PathVariable Long id) {
         Product p = productService.findById(id).orElseThrow(()->
                 new ResourceNotFoundException("Продукт не найден, id: "+ id));
-        return new ProductDto(
-                p.getId(),
-                p.getTitle(),
-                p.getPrice()
-        );
+        return productConverter.entityToDto(p);
     }
     @DeleteMapping("/{id}")
     public void deleteProductById(@PathVariable Long id) {
