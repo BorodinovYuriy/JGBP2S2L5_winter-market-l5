@@ -15,4 +15,11 @@ public class CategoryService {
     public Optional<Category> findByTitle(String title){
         return categoryRepository.findByTitle(title);
     }
+
+    public Category saveCategory(String categoryStr){
+        Category category = new Category();
+        category.setTitle(categoryStr);
+        categoryRepository.save(category);
+        return category;
+    }
 }

@@ -18,9 +18,9 @@ public class ProductValidator {
         if(productDto.getTitle().isBlank()){
             errors.add("Продукт должен иметь название");
         }
-//        if(productDto.getCategoryTitle().isBlank()){
-//            errors.add("Продукт должен иметь категорию");
-//        }
+        if(productDto.getCategoryTitle().isBlank()){
+            errors.add("Продукт должен иметь категорию");
+        }
         if(!errors.isEmpty()){
             throw new ValidationException(errors);
         }
